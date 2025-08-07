@@ -1,0 +1,90 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Slide Maneiro</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background: #121212;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .slide-container {
+      width: 80%;
+      max-width: 600px;
+      background: #1e1e1e;
+      border-radius: 12px;
+      box-shadow: 0 0 15px #6a0dadaa;
+      overflow: hidden;
+      position: relative;
+    }
+    .slide {
+      display: none;
+      padding: 40px 30px;
+      font-size: 1.5rem;
+      text-align: center;
+    }
+    .slide.active {
+      display: block;
+    }
+    .nav-btns {
+      display: flex;
+      justify-content: space-between;
+      background: #2c2c2c;
+      padding: 10px 30px;
+    }
+    button {
+      background: #6a0dad;
+      border: none;
+      color: white;
+      font-size: 1.2rem;
+      padding: 10px 20px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    button:hover {
+      background: #8e2de2;
+    }
+  </style>
+</head>
+<body>
+  <div class="slide-container">
+    <div class="slide active">Slide 1: Bem-vindo ao rolê! ✌️</div>
+    <div class="slide">Slide 2: Aqui é só vibe boa 🔥</div>
+    <div class="slide">Slide 3: Clica nas setas e confere 👇</div>
+    <div class="slide">Slide 4: Você tá arrasando, segue firme! 💪</div>
+  </div>
+  <div class="nav-btns">
+    <button id="prevBtn">⬅️ Anterior</button>
+    <button id="nextBtn">Próximo ➡️</button>
+  </div>
+
+  <script>
+    const slides = document.querySelectorAll('.slide');
+    let currentIndex = 0;
+
+    const showSlide = (index) => {
+      slides.forEach((slide, i) => {
+        slide.classList.toggle('active', i === index);
+      });
+    };
+
+    document.getElementById('prevBtn').addEventListener('click', () => {
+      currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+      showSlide(currentIndex);
+    });
+
+    document.getElementById('nextBtn').addEventListener('click', () => {
+      currentIndex = (currentIndex + 1) % slides.length;
+      showSlide(currentIndex);
+    });
+  </script>
+</body>
+</html>
