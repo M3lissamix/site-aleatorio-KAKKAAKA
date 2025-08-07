@@ -1,0 +1,66 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Site Aleatório daora</title>
+  <style>
+    body {
+      background: linear-gradient(135deg, #8e2de2, #4a00e0);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      text-align: center;
+    }
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 0.5rem;
+      text-shadow: 2px 2px #00000088;
+    }
+    p {
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+      text-shadow: 1px 1px #00000055;
+    }
+    button {
+      background: #fff;
+      color: #4a00e0;
+      border: none;
+      border-radius: 9999px;
+      padding: 15px 30px;
+      font-size: 1.2rem;
+      cursor: pointer;
+      box-shadow: 0 5px 15px #4a00e0aa;
+      transition: transform 0.2s ease;
+    }
+    button:hover {
+      transform: scale(1.1);
+    }
+  </style>
+</head>
+<body>
+  <h1>Salve, zé da internet!</h1>
+  <p>Clica no botão aí e ganha uma surpresa 🤫</p>
+  <button id="surpriseBtn">Clica aqui</button>
+
+  <script>
+    const mensagens = [
+      'Você é uma fera, nunca esquece disso! 🦾',
+      'Hoje é dia de brilhar, bora com tudo! 🌟',
+      'Pega essa vibe boa e espalha por aí! ✨',
+      'Tá tudo certo, só relaxa e segue o fluxo 😎',
+      'Você domina, pode crer! 🚀',
+    ];
+
+    const btn = document.getElementById('surpriseBtn');
+    btn.addEventListener('click', () => {
+      const msg = mensagens[Math.floor(Math.random() * mensagens.length)];
+      alert(msg);
+    });
+  </script>
+</body>
+</html>
