@@ -1,12 +1,12 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <title>Site Aleatório daora</title>
+  <title>Slide Maneiro</title>
   <style>
     body {
-      background: linear-gradient(135deg, #8e2de2, #4a00e0);
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-family: 'Arial', sans-serif;
+      background: #121212;
       color: #fff;
       display: flex;
       flex-direction: column;
@@ -14,53 +14,78 @@
       justify-content: center;
       height: 100vh;
       margin: 0;
+    }
+    .slide-container {
+      width: 80%;
+      max-width: 600px;
+      background: #1e1e1e;
+      border-radius: 12px;
+      box-shadow: 0 0 15px #6a0dadaa;
+      overflow: hidden;
+      position: relative;
+    }
+    .slide {
+      display: none;
+      padding: 40px 30px;
+      font-size: 1.5rem;
       text-align: center;
     }
-    h1 {
-      font-size: 3rem;
-      margin-bottom: 0.5rem;
-      text-shadow: 2px 2px #00000088;
+    .slide.active {
+      display: block;
     }
-    p {
-      font-size: 1.2rem;
-      margin-bottom: 2rem;
-      text-shadow: 1px 1px #00000055;
+    .nav-btns {
+      display: flex;
+      justify-content: space-between;
+      background: #2c2c2c;
+      padding: 10px 30px;
     }
     button {
-      background: #fff;
-      color: #4a00e0;
+      background: #6a0dad;
       border: none;
-      border-radius: 9999px;
-      padding: 15px 30px;
+      color: white;
       font-size: 1.2rem;
+      padding: 10px 20px;
+      border-radius: 8px;
       cursor: pointer;
-      box-shadow: 0 5px 15px #4a00e0aa;
-      transition: transform 0.2s ease;
+      transition: background 0.3s;
     }
     button:hover {
-      transform: scale(1.1);
+      background: #8e2de2;
     }
   </style>
 </head>
 <body>
-  <h1>Salve, zé da internet!</h1>
-  <p>Clica no botão aí e ganha uma surpresa 🤫</p>
-  <button id="surpriseBtn">Clica aqui</button>
+  <div class="slide-container">
+    <div class="slide active">Slide 1: Bem-vindo ao rolê! ✌️</div>
+    <div class="slide">Slide 2: Aqui é só vibe boa 🔥</div>
+    <div class="slide">Slide 3: Clica nas setas e confere 👇</div>
+    <div class="slide">Slide 4: Você tá arrasando, segue firme! 💪</div>
+  </div>
+  <div class="nav-btns">
+    <button id="prevBtn">⬅️ Anterior</button>
+    <button id="nextBtn">Próximo ➡️</button>
+  </div>
 
   <script>
-    const mensagens = [
-      'Você é uma fera, nunca esquece disso! 🦾',
-      'Hoje é dia de brilhar, bora com tudo! 🌟',
-      'Pega essa vibe boa e espalha por aí! ✨',
-      'Tá tudo certo, só relaxa e segue o fluxo 😎',
-      'Você domina, pode crer! 🚀',
-    ];
+    const slides = document.querySelectorAll('.slide');
+    let currentIndex = 0;
 
-    const btn = document.getElementById('surpriseBtn');
-    btn.addEventListener('click', () => {
-      const msg = mensagens[Math.floor(Math.random() * mensagens.length)];
-      alert(msg);
+    const showSlide = (index) => {
+      slides.forEach((slide, i) => {
+        slide.classList.toggle('active', i === index);
+      });
+    };
+
+    document.getElementById('prevBtn').addEventListener('click', () => {
+      currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+      showSlide(currentIndex);
+    });
+
+    document.getElementById('nextBtn').addEventListener('click', () => {
+      currentIndex = (currentIndex + 1) % slides.length;
+      showSlide(currentIndex);
     });
   </script>
 </body>
 </html>
+
